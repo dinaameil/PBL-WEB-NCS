@@ -121,8 +121,7 @@ if (session_status() === PHP_SESSION_NONE) {
     <nav class="navbar navbar-expand-lg navbar-custom fixed-top border-bottom border-kampus-gold">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center" href="index.php">
-                <img src="img/logo_kampus.jpg" alt="Logo"> 
-                <img src="img/logo_jurusan.jpg" alt="Logo">
+                <img style="height: 50px;" src="img/logo_polinema.jpg" alt="Logo Kampus">
                 <span class="fw-bold text-kampus-blue ms-2">Lab NCS</span>
             </a>
 
