@@ -18,7 +18,7 @@
     <div class="login-card p-3">
         
         <div class="d-flex justify-content-center mb-4 gap-3">
-            <img style="height: 50px;" src="img/logo_polinema.jpg" alt="Logo Kampus">
+            <img style="height: 50px;" src="img/logo_polinema.png" alt="Logo Kampus">
         </div>
 
         <div class="card shadow border-0">
