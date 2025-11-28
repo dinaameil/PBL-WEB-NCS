@@ -4,6 +4,53 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 ?>
+
+<style>
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
+    border-radius: 14px;
+    border: 2px solid transparent;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 14px 35px rgba(0,0,0,0.18);
+    border-color: rgba(0,91,187,0.4);
+}
+
+.zoom-img {
+    transition: transform 0.35s ease;
+}
+.zoom-img:hover {
+    transform: scale(1.07);
+}
+
+.ripple {
+    position: relative;
+    overflow: hidden;
+}
+.ripple:after {
+    content: "";
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: rgba(0,115,230,0.3);
+    border-radius: 50%;
+    transform: scale(0);
+    opacity: 0;
+    pointer-events: none;
+}
+.ripple:active:after {
+    opacity: 1;
+    transform: scale(30);
+    transition: transform 0.5s ease-out, opacity 0.7s ease-out;
+    left: var(--x);
+    top: var(--y);
+}
+
+
+</style>
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -16,6 +63,8 @@ if (session_status() === PHP_SESSION_NONE) {
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="assets/style.css">
 
     <style>
         body { 
@@ -34,30 +83,42 @@ if (session_status() === PHP_SESSION_NONE) {
 
         .text-kampus-blue { color: var(--kampus-blue) !important; }
         .bg-kampus-blue { background-color: var(--kampus-blue) !important; color: white; }
-        
+
+        .border-kampus-gold {
+        border-color: #FFCC00 !important;
+        border-width: 4px !important;
+    }
+
+        /* Navbar Custom Blue */
+        .navbar-custom {
+            background-color: var(--kampus-blue) !important;
+            padding-top: 12px;
+            padding-bottom: 12px;
+        }
+
+        .navbar-custom .nav-link {
+            color: white !important;
+        }
+
+        .navbar-custom .nav-link.active,
+        .navbar-custom .nav-link:hover {
+            color: var(--kampus-gold) !important;
+            font-weight: 700;
+        }
+
+        .navbar-custom .navbar-brand span {
+            color: white !important;
+        }
+
         /* Navbar Styling */
         .navbar-brand img { height: 40px; margin-right: 10px; }
-        .nav-link { font-weight: 500; color: #555; }
+        .nav-link { font-weight: 500; color: #2424c5ff; }
         .nav-link:hover, .nav-link.active { color: var(--kampus-blue); font-weight: 700; }
-        
-        /* Hero Section (Khusus Index) */
-        .hero-section {
-            min-height: 60vh;
-            background: linear-gradient(rgba(0, 51, 102, 0.8), rgba(0, 51, 102, 0.8)), url('img/hero_background.jpg');
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: white;
-            margin-bottom: 2rem;
-        }
     </style>
 </head>
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
+    <nav class="navbar navbar-expand-lg navbar-custom fixed-top border-bottom border-kampus-gold">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center" href="index.php">
                 <img src="img/logo_kampus.jpg" alt="Logo"> 

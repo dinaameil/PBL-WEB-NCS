@@ -1,0 +1,240 @@
+/* assets/style.css
+   Global styles untuk Beranda (B + D style)
+   Author: tim PBL Lab NCS
+*/
+
+/* ===== VARIABEL WARNA ===== */
+:root{
+  --kampus-blue: #005BBB;        /* utama */
+  --kampus-blue-dark: #003366;   /* aksen gelap */
+  --kampus-gold: #FFCC00;        /* aksen kuning/emas */
+  --page-bg: #E8F4FF;            /* biru muda latar (sekitar) */
+  --card-bg: #FFFFFF;
+  --muted: #6b7280;
+}
+
+/* ===== RESET SEDIKIT ===== */
+*{box-sizing: border-box;}
+body, html { height: 100%; margin: 0; padding: 0; }
+
+/* ===== BACKGROUND GLOBAL / TYPO ===== */
+body {
+  background-color: var(--page-bg) !important;
+  color: #222;
+  font-family: "Inter", Arial, sans-serif;
+  padding-top: 78px; /* offset untuk navbar fixed */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ===== PAKSA NAVBAR BIRU (override bootstrap bg-white jika ada) ===== */
+.navbar {
+  background-color: var(--kampus-blue) !important;
+  border-bottom: 0;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+}
+
+.navbar .navbar-brand,
+.navbar .navbar-brand img,
+.navbar .navbar-brand span{
+  color: #fff !important;
+  font-weight: 700;
+}
+
+.navbar .nav-link {
+  color: rgba(255,255,255,0.95) !important;
+  font-weight: 600;
+}
+
+.navbar .nav-link:hover,
+.navbar .nav-link.active {
+  color: var(--kampus-gold) !important;
+  text-decoration: none;
+}
+
+/* ===== GARIS EMAS DI BAWAH NAVBAR ===== */
+.navbar-divider {
+  height: 4px;
+  background: linear-gradient(90deg, rgba(255,204,0,1) 0%, rgba(255,204,0,1) 100%);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+/* ===== HERO ===== */
+.hero {
+  position: relative;
+  width: 100%;
+  min-height: 62vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  overflow: hidden;
+}
+
+.hero .hero-bg {
+  position: absolute;
+  inset: 0;
+  background-image: url('../img/hero_background.jpg') !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  z-index: 1;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.35);
+  z-index: 2;
+}
+
+.hero .hero-inner {
+  position: relative;
+  z-index: 3;
+  max-width: 1000px;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+/* CTA buttons */
+.btn-cta {
+  background: var(--kampus-gold);
+  color: var(--kampus-blue);
+  font-weight: 700;
+  padding: 10px 18px;
+  border-radius: 8px;
+  box-shadow: 0 6px 18px rgba(0,91,187,0.12);
+  border: none;
+  margin-right: 10px;
+}
+.btn-cta-outline {
+  background: transparent;
+  color: white;
+  border: 1.5px solid rgba(255,255,255,0.18);
+  padding: 10px 18px;
+  border-radius: 8px;
+}
+
+/* ===== DIVIDER EMAS (di bawah hero) ===== */
+.divider-gold {
+  height: 6px;
+  width: 100%;
+  background: linear-gradient(90deg, #FFD54A 0%, #FFCC00 50%, #FFD54A 100%);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+}
+
+/* ===== KONTAINER KARTU / SECTIONS ===== */
+.section {
+  padding: 48px 12px;
+}
+
+/* Section heading */
+.section .section-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+.section .section-title h3 {
+  margin: 0;
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: var(--kampus-blue-dark);
+}
+.section .section-title .line {
+  height: 4px;
+  width: 60px;
+  background: var(--kampus-gold);
+  border-radius: 4px;
+}
+
+/* CARD STYLE */
+.card {
+  background: var(--card-bg);
+  border: none;
+  border-radius: 12px;
+  transition: transform 0.28s ease, box-shadow 0.28s ease;
+  overflow: hidden;
+  color: #222;
+}
+.card .card-body { padding: 18px; }
+
+.card-hover:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 18px 35px rgba(0,0,0,0.12);
+}
+
+/* small title */
+.card .card-title {
+  color: var(--kampus-blue-dark);
+  font-weight: 700;
+}
+
+/* gambar kartu (galeri preview) */
+.img-cover {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  transition: transform 0.45s ease;
+}
+.img-cover:hover { transform: scale(1.06); }
+
+/* grid responsif: at mobile, cards stacked nicely */
+.row-gap { row-gap: 20px; }
+
+/* ===== ARSIP LIST ===== */
+.archive-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(3,37,76,0.06);
+}
+.archive-item .pdf-icon {
+  width: 56px;
+  height: 56px;
+  background: linear-gradient(180deg,#fff 0%, #ffe9c4 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  color: #c62828;
+  font-weight: 800;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+}
+
+/* ===== STRUKTUR / TIM PREVIEW ===== */
+.team-photo {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 2px solid rgba(0,91,187,0.06);
+}
+
+/* ===== CONTACT CARD ===== */
+.contact-card {
+  background: linear-gradient(180deg, rgba(0,91,187,0.07), rgba(0,91,187,0.02));
+  border-radius: 12px;
+  padding: 18px;
+}
+
+/* ===== FOOTER OVERRIDES (jika footer.php pakai class berbeda) ===== */
+.footer-ncs {
+  background: var(--kampus-blue-dark);
+  color: #fff;
+  padding: 48px 0;
+}
+.footer-ncs a { color: rgba(255,255,255,0.9); }
+.footer-bottom { text-align:center; color: rgba(255,255,255,0.9); padding: 16px 0; }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 767px) {
+  .hero h1 { font-size: 1.8rem; }
+  .img-cover { height: 160px; }
+  body { padding-top: 72px; }
+}
