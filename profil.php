@@ -2,11 +2,24 @@
     $page_title = "Profil";
     $active_page = "profil";
     include('header.php');
+
+    // --- BAGIAN DINAMIS ---
+    // 1. Hubungkan ke Database
+    include('config/db_config.php');
+
+    // 2. Ambil data dari tabel 'pengurus' (PostgreSQL)
+    $sql = "SELECT * FROM pengurus ORDER BY id ASC";
+    $result = pg_query($conn, $sql);
+
+    // Siapkan array data (kosong jika query gagal/data tidak ada)
+    $daftar_pengurus = [];
+    if ($result) {
+        $daftar_pengurus = pg_fetch_all($result, PGSQL_ASSOC);
+    }
 ?>
 
 <div class="container py-5">
 
-    <!-- Judul Halaman -->
     <h1 class="text-center fw-bold text-kampus-blue mb-4">Profil Laboratorium NCS</h1>
 
     <p class="text-center text-muted mb-5">
@@ -14,7 +27,6 @@
         yang berfokus pada jaringan komputer, keamanan siber, dan teknologi informasi modern.
     </p>
 
-    <!-- SECTION 1 — SAMBUTAN -->
     <div class="row align-items-center mb-5">
         <div class="col-lg-6 mb-4 mb-lg-0">
             <img src="https://placehold.co/600x400/eeeeee/999999?text=Laboratorium+NCS"
@@ -33,130 +45,176 @@
         </div>
     </div>
 
-    <!-- SECTION 2 — VISI MISI -->
     <div class="mb-5">
         <h3 class="fw-bold text-kampus-blue mb-3">Visi dan Misi</h3>
 
-        <div class="card shadow-sm mb-4">
-            <div class="card-body">
-                <h5 class="fw-bold">Visi</h5>
-                <p class="text-muted mb-0">
-                    Menjadi laboratorium unggul dalam pendidikan dan riset di bidang jaringan dan keamanan siber.
-                </p>
+        <div class="row g-4">
+            <div class="col-md-6">
+                <div class="card shadow-sm h-100 border-0 border-start border-4 border-primary">
+                    <div class="card-body">
+                        <h5 class="fw-bold text-primary">Visi</h5>
+                        <p class="text-muted mb-0">
+                            Menjadi laboratorium unggul dalam pendidikan dan riset di bidang jaringan dan keamanan siber.
+                        </p>
+                    </div>
+                </div>
             </div>
-        </div>
-
-        <div class="card shadow-sm">
-            <div class="card-body">
-                <h5 class="fw-bold">Misi</h5>
-                <ul class="text-muted mb-0">
-                    <li>Menyelenggarakan praktikum berkualitas berbasis teknologi terbaru.</li>
-                    <li>Mendukung riset dan inovasi dalam bidang jaringan dan cyber security.</li>
-                    <li>Menjadi pusat kegiatan kompetisi dan workshop keamanan informasi.</li>
-                    <li>Memfasilitasi mahasiswa dalam pengembangan skill profesional.</li>
-                </ul>
+            <div class="col-md-6">
+                <div class="card shadow-sm h-100 border-0 border-start border-4 border-warning">
+                    <div class="card-body">
+                        <h5 class="fw-bold text-warning">Misi</h5>
+                        <ul class="text-muted mb-0 small ps-3">
+                            <li>Menyelenggarakan praktikum berkualitas berbasis teknologi terbaru.</li>
+                            <li>Mendukung riset dan inovasi dalam bidang jaringan dan cyber security.</li>
+                            <li>Menjadi pusat kegiatan kompetisi dan workshop keamanan informasi.</li>
+                            <li>Memfasilitasi mahasiswa dalam pengembangan skill profesional.</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
-    <!-- SECTION 3 — FOKUS KEGIATAN -->
     <div class="mb-5">
         <h3 class="fw-bold text-kampus-blue mb-4">Fokus Kegiatan Laboratorium</h3>
 
         <div class="row g-4">
-
             <div class="col-md-4">
-                <div class="card h-100 shadow-sm">
-                    <div class="card-body">
+                <div class="card h-100 shadow-sm border-0 hover-card">
+                    <div class="card-body text-center">
+                        <div class="mb-3 text-primary"><i class="bi bi-diagram-3-fill fs-1"></i></div>
                         <h5 class="fw-bold text-kampus-blue">Praktikum Jaringan</h5>
-                        <p class="text-muted">
-                            Kegiatan praktikum seperti konfigurasi router, switch, VLAN, routing, subnetting, dan manajemen jaringan.
+                        <p class="text-muted small">
+                            Konfigurasi router, switch, VLAN, routing, subnetting, dan manajemen jaringan.
                         </p>
                     </div>
                 </div>
             </div>
 
             <div class="col-md-4">
-                <div class="card h-100 shadow-sm">
-                    <div class="card-body">
+                <div class="card h-100 shadow-sm border-0 hover-card">
+                    <div class="card-body text-center">
+                        <div class="mb-3 text-danger"><i class="bi bi-shield-lock-fill fs-1"></i></div>
                         <h5 class="fw-bold text-kampus-blue">Cyber Security</h5>
-                        <p class="text-muted">
-                            Pembelajaran dan latihan penetration testing, keamanan sistem, analisis serangan, serta hardening server.
+                        <p class="text-muted small">
+                            Penetration testing, analisis serangan, serta hardening server.
                         </p>
                     </div>
                 </div>
             </div>
 
             <div class="col-md-4">
-                <div class="card h-100 shadow-sm">
-                    <div class="card-body">
+                <div class="card h-100 shadow-sm border-0 hover-card">
+                    <div class="card-body text-center">
+                        <div class="mb-3 text-success"><i class="bi bi-trophy-fill fs-1"></i></div>
                         <h5 class="fw-bold text-kampus-blue">Riset & Kompetisi</h5>
-                        <p class="text-muted">
-                            Pusat riset, kegiatan kompetisi CTF, workshop, seminar, dan pengembangan inovasi bidang jaringan serta siber.
+                        <p class="text-muted small">
+                            Riset, CTF, workshop, dan pengembangan inovasi.
                         </p>
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 
 
-    <!-- SECTION 4 — FASILITAS -->
     <div class="mb-5">
         <h3 class="fw-bold text-kampus-blue mb-4">Fasilitas Laboratorium</h3>
 
         <div class="row g-4">
-
             <div class="col-md-4">
-                <div class="card h-100 shadow-sm">
+                <div class="card h-100 shadow-sm border-0">
                     <div class="card-body">
-                        <h5 class="fw-bold text-kampus-blue">Perangkat Jaringan</h5>
-                        <p class="text-muted">
-                            Router, switch, access point, server mini, dan perangkat jaringan lainnya untuk kebutuhan praktikum.
+                        <h5 class="fw-bold text-kampus-blue"><i class="bi bi-router me-2"></i>Perangkat Jaringan</h5>
+                        <p class="text-muted small">
+                            Router, switch, access point, server mini, dan perangkat jaringan lainnya.
                         </p>
                     </div>
                 </div>
             </div>
 
             <div class="col-md-4">
-                <div class="card h-100 shadow-sm">
+                <div class="card h-100 shadow-sm border-0">
                     <div class="card-body">
-                        <h5 class="fw-bold text-kampus-blue">Ruang Belajar & Riset</h5>
-                        <p class="text-muted">
-                            Ruang laboratorium yang nyaman untuk aktivitas belajar mandiri, riset, dan kegiatan kelompok.
+                        <h5 class="fw-bold text-kampus-blue"><i class="bi bi-house-door me-2"></i>Ruang Riset</h5>
+                        <p class="text-muted small">
+                            Ruang laboratorium nyaman untuk belajar mandiri dan riset.
                         </p>
                     </div>
                 </div>
             </div>
 
             <div class="col-md-4">
-                <div class="card h-100 shadow-sm">
+                <div class="card h-100 shadow-sm border-0">
                     <div class="card-body">
-                        <h5 class="fw-bold text-kampus-blue">Komputer Praktikum</h5>
-                        <p class="text-muted">
-                            Komputer dengan spesifikasi yang mendukung simulasi jaringan, virtualisasi, dan tool keamanan siber.
+                        <h5 class="fw-bold text-kampus-blue"><i class="bi bi-pc-display me-2"></i>Komputer Praktikum</h5>
+                        <p class="text-muted small">
+                            PC High-spec untuk simulasi jaringan dan virtualisasi.
                         </p>
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 
-    <!-- SECTION 5 — STRUKTUR LAB -->
     <div class="mb-5">
-        <h3 class="fw-bold text-kampus-blue mb-3">Struktur Laboratorium</h3>
+        <div class="text-center mb-4">
+            <h3 class="fw-bold text-kampus-blue">Struktur Laboratorium</h3>
+            <p class="text-muted">Tim dosen dan asisten Laboratorium NCS</p>
+        </div>
 
-        <div class="card shadow-sm p-4">
-            <ul class="text-muted">
-                <li><strong>Kepala Laboratorium:</strong> —</li>
-                <li><strong>Koordinator Praktikum:</strong> —</li>
-                <li><strong>Asisten Laboratorium:</strong> Mahasiswa terpilih dari Prodi Teknologi Informasi</li>
-            </ul>
+        <div class="row g-4 justify-content-center">
+
+            <?php if (!empty($daftar_pengurus)): ?>
+                
+                <?php foreach ($daftar_pengurus as $pengurus): ?>
+                <div class="col-sm-6 col-md-4 col-lg-3 text-center">
+                    <div class="card h-100 border-0 shadow-sm hover-card">
+                        <div class="card-body p-4 d-flex flex-column align-items-center">
+                            
+                            <?php 
+                                // Jika ada foto di database, pakai itu. Jika tidak, pakai placeholder.
+                                $foto = !empty($pengurus['foto_path']) ? $pengurus['foto_path'] : 'https://placehold.co/150x150?text=No+Foto'; 
+                            ?>
+                            <img src="<?php echo $foto; ?>" alt="<?php echo htmlspecialchars($pengurus['nama']); ?>" 
+                                 class="rounded-circle shadow-sm mb-3 object-fit-cover" 
+                                 style="width: 130px; height: 130px; border: 4px solid #f8f9fa;">
+                            
+                            <h6 class="fw-bold text-kampus-blue mb-1">
+                                <?php echo htmlspecialchars($pengurus['nama']); ?>
+                            </h6>
+                            
+                            <div class="mt-auto pt-2">
+                                <span class="badge bg-light text-secondary border px-3 py-2 rounded-pill">
+                                    <?php echo htmlspecialchars($pengurus['jabatan']); ?>
+                                </span>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <?php endforeach; ?>
+
+            <?php else: ?>
+                <div class="col-12 text-center py-5">
+                    <div class="bg-light p-4 rounded border border-dashed">
+                        <i class="bi bi-people fs-1 text-muted mb-3 d-block"></i>
+                        <h5 class="text-muted">Belum ada data pengurus.</h5>
+                        <p class="small text-muted mb-0">Silakan login sebagai Admin untuk menambahkan data.</p>
+                    </div>
+                </div>
+            <?php endif; ?>
+
         </div>
     </div>
 
 </div>
+
+<style>
+    .hover-card { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+    .hover-card:hover { transform: translateY(-5px); box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.15)!important; }
+    .text-kampus-blue { color: #003366; }
+    .bg-kampus-blue { background-color: #003366; }
+</style>
 
 <?php include('footer.php'); ?>
