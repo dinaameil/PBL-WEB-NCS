@@ -308,4 +308,30 @@ a.text-kampus-blue:hover {
   text-decoration: none;
 }
 
+/* ===== FOOTER HOVER PER ITEM ===== */
+
+/* default */
+footer p,
+footer a,
+footer li,
+footer small {
+  transition: color 0.25s ease;
+}
+
+/* LINK (Navigasi & Link Terkait) */
+footer a.text-white-50:hover {
+  color: #ffffff !important;
+  text-decoration: none;
+}
+
+/* PARAGRAF & TEKS BIASA */
+footer p.text-white-50:hover,
+footer small.text-white-50:hover {
+  color: #ffffff !important;
+}
+
+/* LIST ITEM (kalau teks bukan <a>) */
+footer li:hover {
+  color: #ffffff;
+}
 
