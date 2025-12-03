@@ -65,12 +65,28 @@ body {
 .hero {
   position: relative;
   width: 100%;
-  min-height: 62vh;
+  min-height: 80vh;
   display: flex;
   align-items: center;
   justify-content: center;
   color: white;
   overflow: hidden;
+}
+
+.hero-title {
+    font-size: 3rem;
+    line-height: 1.2;
+}
+
+.hero-title-light {
+    font-weight: 800;
+    color: #ffffff;
+}
+
+.hero-title-bold {
+    font-weight: 800; /* INI bikin tebal */
+    color: #FFCC00;
+    letter-spacing: 1px;
 }
 
 .hero .hero-bg {
@@ -99,7 +115,7 @@ body {
   text-align: center;
 }
 
-/* CTA buttons */
+/* CTA buttons 
 .btn-cta {
   background: var(--kampus-gold);
   color: var(--kampus-blue);
@@ -116,7 +132,7 @@ body {
   border: 1.5px solid rgba(255,255,255,0.18);
   padding: 10px 18px;
   border-radius: 8px;
-}
+} */
 
 /* ===== DIVIDER EMAS (di bawah hero) ===== */
 .divider-gold {
@@ -238,3 +254,58 @@ body {
   .img-cover { height: 160px; }
   body { padding-top: 72px; }
 }
+
+/* Outline secondary → hover biru */
+.btn-outline-secondary {
+  border: 1.5px solid var(--kampus-blue-dark);
+  color: var(--kampus-blue-dark);
+  font-weight: 600;
+  background: transparent;
+}
+
+.btn-outline-secondary:hover {
+  background-color: var(--kampus-blue);
+  color: #ffffff;
+  border-color: var(--kampus-blue);
+}
+
+/* Outline primary → hover biru */
+.btn-outline-primary {
+  border: 1.5px solid var(--kampus-blue-dark);
+  color: var(--kampus-blue-dark);
+  background: transparent;
+}
+
+.btn-outline-primary:hover {
+  background-color: var(--kampus-blue);
+  color: #ffffff;
+  border-color: var(--kampus-blue);
+}
+
+/* CTA button → hover biru */
+.btn-cta {
+  border: 1.5px solid var(--kampus-blue-dark);
+  background-color: #ffffff;
+  color: var(--kampus-blue-dark);
+  font-weight: 700;
+}
+
+.btn-cta:hover {
+  background-color: var(--kampus-blue);
+  color: #ffffff;
+  border-color: var(--kampus-blue);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px rgba(0,0,0,0.18);
+}
+
+/* Link teks biru → hover jadi biru tua */
+a.text-kampus-blue {
+  color: var(--kampus-blue-dark);
+}
+
+a.text-kampus-blue:hover {
+  color: var(--kampus-blue);
+  text-decoration: none;
+}
+
+

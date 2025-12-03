@@ -7,22 +7,18 @@
 
 <!-- ===== HERO ===== -->
 <section class="hero">
-    <div class="hero-bg" style="background-image: url('img/hero_background.jpg');"></div>
+    <div class="hero-bg"></div>
 
     <div class="hero-inner text-center">
-        <h1>
-            Laboratorium <br>
-            <span style="color: #FFD966;">Network & Cyber Security</span>
+        <h1 class="hero-title">
+            <span class="hero-title-light">Laboratorium</span><br>
+            <span class="hero-title-bold">Network & Cyber Security</span>
         </h1>
 
         <p class="lead">
-            Portal resmi Lab NCS — Pendidikan, penelitian, dan layanan di bidang jaringan & keamanan siber.
+            LAB NCS — Pendidikan, Penelitian, dan Layanan di Bidang Jaringan & Keamanan Siber
         </p>
 
-        <div class="d-flex justify-content-center gap-2 mt-3">
-            <a href="profil.php" class="btn btn-cta">Tentang Kami</a>
-            <a href="layanan.php" class="btn btn-cta-outline">Layanan</a>
-        </div>
     </div>
 </section>
 
@@ -215,7 +211,7 @@
             <div class="text-muted small">Penelitian — 18 Nov 2025</div>
           </div>
           <div class="ms-auto">
-            <a href="assets/panduan_jaringan.pdf" class="btn btn-sm btn-primary">Lihat</a>
+            <a href="assets/panduan_jaringan.pdf" class="btn btn-sm btn-outline-secondary">Lihat</a>
           </div>
         </div>
       </div>
@@ -228,7 +224,7 @@
             <div class="text-muted small">Penelitian — 20 Okt 2025</div>
           </div>
           <div class="ms-auto">
-            <a href="assets/laporan_iot.pdf" class="btn btn-sm btn-primary">Lihat</a>
+            <a href="assets/laporan_iot.pdf" class="btn btn-sm btn-outline-secondary">Lihat</a>
           </div>
         </div>
       </div>
@@ -241,7 +237,7 @@
             <div class="text-muted small">Modul — 01 Sep 2025</div>
           </div>
           <div class="ms-auto">
-            <a href="assets/modul_keamanan.pdf" class="btn btn-sm btn-primary">Lihat</a>
+            <a href="assets/modul_keamanan.pdf" class="btn btn-sm btn-outline-secondary">Lihat</a>
           </div>
         </div>
       </div>
