@@ -17,7 +17,7 @@ document.addEventListener("click", (e) => {
                 <h5 class="fw-bold text-uppercase mb-3">Lab NCS</h5>
                 <p class="small text-white-50">
                     Laboratorium Network & Cyber Security <br>
-                    Gedung Sipil Lt. 7 <br>
+                    Gedung Teknik Sipil Lantai 8 <br>
                     Politeknik Negeri Malang
                 </p>
                 <p class="small text-white-50">
