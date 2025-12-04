@@ -269,6 +269,24 @@ body {
   border-color: var(--kampus-blue);
 }
 
+/* style tab navigasi galeri */
+.nav-tabs .nav-link:not(.active) {
+    color: var(--muted) !important; 
+    border-color: transparent !important; 
+    background-color: transparent !important;
+}
+
+.nav-tabs .nav-link.active {
+    color: var(--kampus-blue-dark) !important; 
+    border-top-color: transparent !important;
+    border-left-color: transparent !important;
+    border-right-color: transparent !important;
+}
+
+.nav-tabs .nav-link:not(.active):hover {
+    color: var(--kampus-blue) !important;
+}
+
 /* Outline primary → hover biru */
 .btn-outline-primary {
   border: 1.5px solid var(--kampus-blue-dark);

@@ -21,7 +21,7 @@
                 </button>
             </li>
             <li class="nav-item">
-                <button class="nav-link fw-bold text-secondary" id="agenda-tab" data-bs-toggle="tab" data-bs-target="#agenda" type="button">
+                <button class="nav-link fw-bold" id="agenda-tab" data-bs-toggle="tab" data-bs-target="#agenda" type="button">
                     Agenda (Akan Datang)
                 </button>
             </li>
