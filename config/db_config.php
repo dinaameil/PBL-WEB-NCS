@@ -4,9 +4,9 @@
 // (Sesuaikan ini dengan pengaturan pgAdmin kamu)
 
 $DB_HOST = "localhost";
-$DB_PORT = "5432";      // Port default PostgreSQL
+$DB_PORT = "5434";      // Port default PostgreSQL
 $DB_USER = "postgres";  // User default PostgreSQL
-$DB_PASS = "123";     // GANTI DENGAN PASSWORD pgAdmin-mu
+$DB_PASS = "akuDina06";     // GANTI DENGAN PASSWORD pgAdmin-mu
 $DB_NAME = "pbl_web_ncs"; // Nama database kita
 
 // --- Buat String Koneksi ---

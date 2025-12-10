@@ -66,10 +66,20 @@
                     <td class="ps-4 fw-bold"><?php echo htmlspecialchars($item['judul']); ?></td>
                     <td><span class="badge bg-light text-dark border"><?php echo $item['kategori']; ?></span></td>
                     <td><?php echo date('d/m/Y', strtotime($item['tanggal'])); ?></td>
-                    <td>
-                        <a href="../<?php echo $item['file_path']; ?>" target="_blank" class="btn btn-sm btn-outline-primary me-1"><i class="bi bi-eye"></i></a>
-                        <a href="hapus_arsip.php?id=<?php echo $item['id']; ?>" class="btn btn-sm btn-outline-danger" onclick="return confirm('Hapus dokumen ini?');"><i class="bi bi-trash"></i></a>
-                    </td>
+                        <td class="text-nowrap">
+                            <a href="../<?php echo $item['file_path']; ?>" target="_blank" 
+                            class="btn btn-primary btn-sm me-1"
+                            style="padding: 6px 12px; font-size: 14px;">
+                            <i class="bi bi-eye me-1"></i> Lihat
+                            </a>
+                            
+                            <a href="hapus_arsip.php?id=<?php echo $item['id']; ?>" 
+                            class="btn btn-danger btn-sm" 
+                            onclick="return confirm('Hapus dokumen ini?');"
+                            style="padding: 6px 12px; font-size: 14px;">
+                            <i class="bi bi-trash me-1"></i> Hapus
+                            </a>
+                        </td>
                 </tr>
                 <?php endforeach; ?>
             </tbody>

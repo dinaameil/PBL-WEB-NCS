@@ -353,3 +353,17 @@ footer li:hover {
   color: #ffffff;
 }
 
+/* Memperbesar Tombol Aksi di dalam Tabel */
+table td .btn {
+    padding: 6px 12px !important; /* Menambah ruang di dalam tombol */
+    font-size: 14px !important;   /* Memperbesar ukuran ikon/teks */
+    line-height: 1.5 !important;  /* Menjaga ikon tetap di tengah vertikal */
+    border-radius: 4px !important; /* Agar sudutnya tidak terlalu bulat aneh */
+}
+
+/* Opsional: Memastikan ikon di dalamnya cukup besar */
+table td .btn i {
+    font-size: 16px !important;
+    vertical-align: middle;
+}
+

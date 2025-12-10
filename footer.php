@@ -51,7 +51,7 @@ document.addEventListener("click", (e) => {
                         </a>
                     </li>
                     <li class="mb-2">
-                        <a href="https://sinta.kemdikbud.go.id/" target="_blank" class="text-white-50 text-decoration-none">
+                        <a href="https://sinta.kemdiktisaintek.go.id/" target="_blank" class="text-white-50 text-decoration-none">
                             <i class="bi bi-journal-text me-2"></i>SINTA
                         </a>
                     </li>
