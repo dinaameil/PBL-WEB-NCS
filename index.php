@@ -40,74 +40,87 @@
 <div class="divider-gold"></div>
 
 <section class="section container">
-  <div class="row align-items-center">
-    <!-- IDENTITAS -->
+
+  <!-- JUDUL BIDANG FOKUS (ATAS SENDIRI) -->
+  <div class="section-title mb-4 d-flex align-items-center">
+    <div class="line"></div>
+    <h3 class="ms-2">Bidang Fokus</h3>
+  </div>
+
+  <div class="row align-items-start">
+
+    <!-- KIRI: TENTANG LAB NCS -->
     <div class="col-lg-6 mb-4">
-      <div class="card p-3">
+      <div class="card p-3 h-100">
         <div class="card-body">
           <h4 class="card-title">Tentang Lab NCS</h4>
           <p class="mb-2 text-muted">
-            Laboratorium Network & Cyber Security (NCS) adalah fasilitas pembelajaran dan riset pada Program Studi Teknologi Informasi.
-            Fokus pada jaringan, keamanan siber, digital forensics, dan pengembangan solusi infrastruktur.
+            Laboratorium Network & Cyber Security (NCS) adalah fasilitas pembelajaran dan riset
+            pada Program Studi Teknologi Informasi. Fokus pada jaringan, keamanan siber,
+            digital forensics, dan pengembangan solusi infrastruktur.
           </p>
-          <a href="profil.php" class="text-decoration-none fw-bold text-kampus-blue">Selengkapnya &rarr;</a>
+          <a href="profil.php" class="text-decoration-none fw-bold text-kampus-blue">
+            Selengkapnya &rarr;
+          </a>
         </div>
       </div>
     </div>
 
-
-
-    <!-- BIDANG FOKUS (4 card) -->
+    <!-- KANAN: 4 CARD BIDANG FOKUS -->
     <div class="col-lg-6">
-      <div class="section-title mb-3 d-flex align-items-center">
-        <div class="line"></div>
-        <h3 class="ms-2">Bidang Fokus</h3>
-      </div>
+      <div class="row g-4">
 
-      <div class="row row-gap">
         <div class="col-md-6">
-          <div class="card card-hover p-3">
-            <div class="card-body d-flex gap-3 align-items-start">
-              <div style="font-size:28px; color:var(--kampus-blue)"><i class="bi bi-hdd-network"></i></div>
+          <div class="card card-hover h-100">
+            <div class="card-body d-flex gap-3">
+              <div class="icon-focus"><i class="bi bi-hdd-network"></i></div>
               <div>
                 <h5 class="card-title mb-1">Network Engineering</h5>
-                <p class="text-muted small mb-0">Desain, konfigurasi, dan manajemen jaringan kampus & lab.</p>
+                <p class="text-muted small mb-0">
+                  Desain, konfigurasi, dan manajemen jaringan kampus & lab.
+                </p>
               </div>
             </div>
           </div>
         </div>
 
         <div class="col-md-6">
-          <div class="card card-hover p-3">
-            <div class="card-body d-flex gap-3 align-items-start">
-              <div style="font-size:28px; color:var(--kampus-blue)"><i class="bi bi-shield-lock"></i></div>
-              <div>
-                <h5 class="card-title mb-1">Cyber Security</h5>
-                <p class="text-muted small mb-0">Penelitian dan praktik keamanan sistem & aplikasi.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-6 mt-3">
-          <div class="card card-hover p-3">
-            <div class="card-body d-flex gap-3 align-items-start">
-              <div style="font-size:28px; color:var(--kampus-blue)"><i class="bi bi-file-earmark-text"></i></div>
-              <div>
-                <h5 class="card-title mb-1">Digital Forensics</h5>
-                <p class="text-muted small mb-0">Investigasi digital dan pemulihan bukti elektronik.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-6 mt-3">
-          <div class="card card-hover p-3">
-            <div class="card-body d-flex gap-3 align-items-start">
-              <div style="font-size:28px; color:var(--kampus-blue)"><i class="bi bi-cloud-fill"></i></div>
+          <div class="card card-hover h-100">
+            <div class="card-body d-flex gap-3">
+              <div class="icon-focus"><i class="bi bi-cloud-fill"></i></div>
               <div>
                 <h5 class="card-title mb-1">Cloud & Virtualization</h5>
-                <p class="text-muted small mb-0">Virtualisasi layanan & infrastruktur untuk penelitian.</p>
+                <p class="text-muted small mb-0">
+                  Virtualisasi layanan & infrastruktur untuk penelitian.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="card card-hover h-100">
+            <div class="card-body d-flex gap-3">
+              <div class="icon-focus"><i class="bi bi-file-earmark-text"></i></div>
+              <div>
+                <h5 class="card-title mb-1">Digital Forensics</h5>
+                <p class="text-muted small mb-0">
+                  Investigasi digital dan pemulihan bukti elektronik.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="card card-hover h-100">
+            <div class="card-body d-flex gap-3">
+              <div class="icon-focus"><i class="bi bi-shield-lock"></i></div>
+              <div>
+                <h5 class="card-title mb-1">Cyber Security</h5>
+                <p class="text-muted small mb-0">
+                  Penelitian dan praktik keamanan sistem & aplikasi.
+                </p>
               </div>
             </div>
           </div>

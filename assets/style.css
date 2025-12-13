@@ -366,4 +366,18 @@ table td .btn i {
     font-size: 16px !important;
     vertical-align: middle;
 }
+/* ===== BIDANG FOKUS ===== */
+.icon-focus {
+  font-size: 28px;
+  color: var(--kampus-blue);
+  min-width: 36px;
+}
+
+.section .card.h-100 {
+  height: 100%;
+}
+
+.section .card-body {
+  min-height: 120px;
+}
 
