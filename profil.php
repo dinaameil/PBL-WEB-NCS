@@ -1,21 +1,20 @@
 <?php
-    $page_title = "Profil";
-    $active_page = "profil";
-    include('header.php');
+$page_title = "Profil";
+$active_page = "profil";
+include('header.php');
 
-    // --- BAGIAN DINAMIS ---
-    // 1. Hubungkan ke Database
-    include('config/db_config.php');
+// 1. Hubungkan ke Database
+include('config/db_config.php');
 
-    // 2. Ambil data dari tabel 'pengurus' (PostgreSQL)
-    $sql = "SELECT * FROM pengurus ORDER BY id ASC";
-    $result = pg_query($conn, $sql);
+// 2. Ambil data dari tabel 'dosen' (Pengurus Laboratorium)
+$sql = "SELECT * FROM dosen ORDER BY id ASC";
+$result = pg_query($conn, $sql);
 
-    // Siapkan array data (kosong jika query gagal/data tidak ada)
-    $daftar_pengurus = [];
-    if ($result) {
-        $daftar_pengurus = pg_fetch_all($result, PGSQL_ASSOC);
-    }
+// Siapkan array data (kosong jika query gagal/data tidak ada)
+$daftar_pengurus = [];
+if ($result) {
+    $daftar_pengurus = pg_fetch_all($result, PGSQL_ASSOC);
+}
 ?>
 
 <div class="container py-5">
@@ -46,7 +45,9 @@
     </div>
 
     <div class="mb-5">
-        <h3 class="fw-bold text-kampus-blue mb-3">Visi dan Misi</h3>
+        <div class="text-center mb-4">
+            <h3 class="fw-bold text-kampus-blue">Visi dan Misi</h3>
+    </div>
 
         <div class="row g-4">
             <div class="col-md-6">
@@ -76,8 +77,9 @@
     </div>
 
     <div class="mb-5">
-        <h3 class="fw-bold text-kampus-blue mb-4">Fokus Kegiatan Laboratorium</h3>
-
+        <div class="text-center mb-4">
+            <h3 class="fw-bold text-kampus-blue">Fokus Kegiatan Laboratorium</h3>
+    </div>
         <div class="row g-4">
             <div class="col-md-4">
                 <div class="card h-100 shadow-sm border-0 hover-card">
@@ -117,9 +119,10 @@
         </div>
     </div>
 
-
     <div class="mb-5">
-        <h3 class="fw-bold text-kampus-blue mb-4">Fasilitas Laboratorium</h3>
+        <div class="text-center mb-4">
+            <h3 class="fw-bold text-kampus-blue">Fasilitas Laboratorium</h3>
+    </div>
 
         <div class="row g-4">
             <div class="col-md-4">
@@ -157,42 +160,60 @@
         </div>
     </div>
 
-    <div class="mb-5">
+    <div class="mb-5" id="struktur-lab">
         <div class="text-center mb-4">
             <h3 class="fw-bold text-kampus-blue">Struktur Laboratorium</h3>
             <p class="text-muted">Tim dosen dan asisten Laboratorium NCS</p>
         </div>
 
         <div class="row g-4 justify-content-center">
-
             <?php if (!empty($daftar_pengurus)): ?>
-                
-                <?php foreach ($daftar_pengurus as $pengurus): ?>
-                <div class="col-sm-6 col-md-4 col-lg-3 text-center">
-                    <div class="card h-100 border-0 shadow-sm hover-card">
-                        <div class="card-body p-4 d-flex flex-column align-items-center">
-                            
-                            <?php 
-                                // Jika ada foto di database, pakai itu. Jika tidak, pakai placeholder.
-                                $foto = !empty($pengurus['foto_path']) ? $pengurus['foto_path'] : 'https://placehold.co/150x150?text=No+Foto'; 
-                            ?>
-                            <img src="<?php echo $foto; ?>" alt="<?php echo htmlspecialchars($pengurus['nama']); ?>" 
-                                 class="rounded-circle shadow-sm mb-3 object-fit-cover" 
-                                 style="width: 130px; height: 130px; border: 4px solid #f8f9fa;">
-                            
-                            <h6 class="fw-bold text-kampus-blue mb-1">
-                                <?php echo htmlspecialchars($pengurus['nama']); ?>
-                            </h6>
-                            
-                            <div class="mt-auto pt-2">
-                                <span class="badge bg-light text-secondary border px-3 py-2 rounded-pill">
-                                    <?php echo htmlspecialchars($pengurus['jabatan']); ?>
-                                </span>
-                            </div>
 
+                <?php
+                $total = count($daftar_pengurus);
+                $counter = 0;
+                ?>
+
+                <?php foreach ($daftar_pengurus as $pengurus): ?>
+                    <?php $counter++; ?>
+
+                    <div class="col-sm-6 col-md-4 col-lg-3 text-center">
+
+                        <div class="card h-100 border-0 shadow-sm hover-card"
+                            onclick="window.location='detail_dosen.php?id=<?= $pengurus['id']; ?>'">
+
+                            <div class="card-body p-4 d-flex flex-column align-items-center">
+
+                                <?php
+                                    $foto = !empty($pengurus['foto_path'])
+                                        ? $pengurus['foto_path']
+                                        : 'https://placehold.co/130x130?text=No+Foto';
+                                ?>
+
+                                <img src="<?= $foto; ?>"
+                                    alt="<?= htmlspecialchars($pengurus['nama']); ?>"
+                                    class="rounded-circle shadow-sm mb-3 object-fit-cover"
+                                    style="width:130px;height:130px;border:4px solid #f8f9fa;">
+
+                                <h6 class="fw-bold text-kampus-blue mb-1 text-center">
+                                    <?= htmlspecialchars($pengurus['nama']); ?>
+                                </h6>
+
+                                <div class="mt-auto pt-2">
+                                    <span class="badge bg-light text-secondary border px-3 py-2 rounded-pill">
+                                        <?= htmlspecialchars($pengurus['jabatan']); ?>
+                                    </span>
+                                </div>
+
+                            </div>
                         </div>
                     </div>
-                </div>
+
+                    <?php
+                    if ($total % 3 === 2 && $counter === $total - 2) {
+                        echo '</div><div class="row g-4 justify-content-center mt-1">';
+                    }
+                    ?>
                 <?php endforeach; ?>
 
             <?php else: ?>
@@ -204,10 +225,8 @@
                     </div>
                 </div>
             <?php endif; ?>
-
         </div>
     </div>
-
 </div>
 
 <style>
@@ -215,6 +234,7 @@
     .hover-card:hover { transform: translateY(-5px); box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.15)!important; }
     .text-kampus-blue { color: #003366; }
     .bg-kampus-blue { background-color: #003366; }
+    .object-fit-cover { object-fit: cover; }
 </style>
 
 <?php include('footer.php'); ?>

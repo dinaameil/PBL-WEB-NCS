@@ -62,7 +62,7 @@ document.addEventListener("click", (e) => {
             <div class="col-lg-3 col-md-6 mb-4">
                 <h5 class="fw-bold text-uppercase mb-3">Kredit Tim</h5>
                 <p class="small text-white-50 mb-2">Website ini dibuat dan dikelola oleh:</p>
-                <p class="fw-bold small text-white">Kelompok PBL NCS 3 – 2025</p>
+                <p class="fw-bold small text-white">Kelompok 3 PBL NCS – 2025</p>
             </div>
 
         </div>

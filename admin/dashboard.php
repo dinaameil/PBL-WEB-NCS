@@ -45,7 +45,7 @@
                 </div>
                 <h5 class="card-title fw-bold text-kampus-blue">Data Pengurus</h5>
                 <p class="card-text text-muted small">Tambah atau hapus data dosen & peneliti lab.</p>
-                <a href="kelola_pengurus.php" class="btn btn-sm btn-outline-primary mt-2 stretched-link">Kelola</a>
+                <a href="kelola_dosen.php" class="btn btn-sm btn-outline-primary mt-2 stretched-link">Kelola</a>
             </div>
         </div>
     </div>
