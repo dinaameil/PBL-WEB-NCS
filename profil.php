@@ -6,6 +6,20 @@ include('header.php');
 // 1. Hubungkan ke Database
 include('config/db_config.php');
 
+// --- BAGIAN BARU: AMBIL VISI & MISI DARI DATABASE ---
+$sql_teks = "SELECT kunci, isi FROM konten_teks WHERE kunci IN ('visi', 'misi')";
+$result_teks = pg_query($conn, $sql_teks);
+
+$data_teks = [];
+while ($row = pg_fetch_assoc($result_teks)) {
+    $data_teks[$row['kunci']] = $row['isi'];
+}
+
+// Set default kalau data kosong
+$visi = isset($data_teks['visi']) ? $data_teks['visi'] : "Visi belum diatur oleh Admin.";
+$misi = isset($data_teks['misi']) ? $data_teks['misi'] : "Misi belum diatur oleh Admin.";
+// ----------------------------------------------------
+
 // 2. Ambil data dari tabel 'dosen' (Pengurus Laboratorium)
 $sql = "SELECT * FROM dosen ORDER BY id ASC";
 $result = pg_query($conn, $sql);
@@ -47,7 +61,7 @@ if ($result) {
     <div class="mb-5">
         <div class="text-center mb-4">
             <h3 class="fw-bold text-kampus-blue">Visi dan Misi</h3>
-    </div>
+        </div>
 
         <div class="row g-4">
             <div class="col-md-6">
@@ -55,31 +69,28 @@ if ($result) {
                     <div class="card-body">
                         <h5 class="fw-bold text-primary">Visi</h5>
                         <p class="text-muted mb-0">
-                            Menjadi laboratorium unggul dalam pendidikan dan riset di bidang jaringan dan keamanan siber.
+                            <?php echo nl2br(htmlspecialchars($visi)); ?>
                         </p>
                     </div>
                 </div>
             </div>
+            
             <div class="col-md-6">
                 <div class="card shadow-sm h-100 border-0 border-start border-4 border-warning">
                     <div class="card-body">
                         <h5 class="fw-bold text-warning">Misi</h5>
-                        <ul class="text-muted mb-0 small ps-3">
-                            <li>Menyelenggarakan praktikum berkualitas berbasis teknologi terbaru.</li>
-                            <li>Mendukung riset dan inovasi dalam bidang jaringan dan cyber security.</li>
-                            <li>Menjadi pusat kegiatan kompetisi dan workshop keamanan informasi.</li>
-                            <li>Memfasilitasi mahasiswa dalam pengembangan skill profesional.</li>
-                        </ul>
+                        <div class="text-muted mb-0 ps-3">
+                            <?php echo nl2br(htmlspecialchars($misi)); ?>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
     <div class="mb-5">
         <div class="text-center mb-4">
             <h3 class="fw-bold text-kampus-blue">Fokus Kegiatan Laboratorium</h3>
-    </div>
+        </div>
         <div class="row g-4">
             <div class="col-md-4">
                 <div class="card h-100 shadow-sm border-0 hover-card">
@@ -122,7 +133,7 @@ if ($result) {
     <div class="mb-5">
         <div class="text-center mb-4">
             <h3 class="fw-bold text-kampus-blue">Fasilitas Laboratorium</h3>
-    </div>
+        </div>
 
         <div class="row g-4">
             <div class="col-md-4">
@@ -180,20 +191,20 @@ if ($result) {
                     <div class="col-sm-6 col-md-4 col-lg-3 text-center">
 
                         <div class="card h-100 border-0 shadow-sm hover-card"
-                            onclick="window.location='detail_dosen.php?id=<?= $pengurus['id']; ?>'">
+                             onclick="window.location='detail_dosen.php?id=<?= $pengurus['id']; ?>'">
 
                             <div class="card-body p-4 d-flex flex-column align-items-center">
 
                                 <?php
                                     $foto = !empty($pengurus['foto_path'])
-                                        ? $pengurus['foto_path']
-                                        : 'https://placehold.co/130x130?text=No+Foto';
+                                            ? $pengurus['foto_path']
+                                            : 'https://placehold.co/130x130?text=No+Foto';
                                 ?>
 
                                 <img src="<?= $foto; ?>"
-                                    alt="<?= htmlspecialchars($pengurus['nama']); ?>"
-                                    class="rounded-circle shadow-sm mb-3 object-fit-cover"
-                                    style="width:130px;height:130px;border:4px solid #f8f9fa;">
+                                     alt="<?= htmlspecialchars($pengurus['nama']); ?>"
+                                     class="rounded-circle shadow-sm mb-3 object-fit-cover"
+                                     style="width:130px;height:130px;border:4px solid #f8f9fa;">
 
                                 <h6 class="fw-bold text-kampus-blue mb-1 text-center">
                                     <?= htmlspecialchars($pengurus['nama']); ?>
