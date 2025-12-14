@@ -137,7 +137,7 @@ $preview_dosen = $res_preview ? pg_fetch_all($res_preview, PGSQL_ASSOC) : [];
     </div>
 </section>
 
-<section class="section py-3">
+<section class="section py-5 bg-light">
     <div class="container">
         <div class="section-title mb-4 d-flex align-items-center">
             <div class="line"></div>
@@ -145,41 +145,89 @@ $preview_dosen = $res_preview ? pg_fetch_all($res_preview, PGSQL_ASSOC) : [];
         </div>
 
         <div class="row g-4">
+            
             <div class="col-md-4">
-                <div class="card card-hover h-100">
-                    <img src="img/service1.jpg" onerror="this.src='https://placehold.co/400x250?text=Layanan+1'" alt="Peminjaman" class="img-cover" style="height: 200px; object-fit: cover;">
+                <div class="card card-hover h-100 border-0 shadow-sm overflow-hidden">
+                    <div class="img-wrapper position-relative">
+                        
+                        <img src="https://images.unsplash.com/photo-1520869562399-e772f042f422?q=80&w=800&auto=format&fit=crop" 
+                            alt="Rak Server dan Alat Jaringan" 
+                            class="card-img-top img-zoom"
+                            style="object-fit: cover; height: 200px; width: 100%;">
+                        
+                        <div class="position-absolute top-0 end-0 m-2 bg-warning text-dark fw-bold px-3 py-1 rounded-pill small shadow-sm">Gratis</div>
+                    </div>
                     <div class="card-body">
-                        <h5 class="card-title">Peminjaman Alat</h5>
-                        <p class="text-muted small">Router, switch, access point, dan perangkat praktikum dapat dipinjam sesuai prosedur.</p>
-                        <a href="layanan.php" class="text-decoration-none fw-bold text-kampus-blue">Lihat layanan &rarr;</a>
+                        <h5 class="card-title fw-bold text-kampus-blue">Peminjaman Alat</h5>
+                        <p class="text-muted small">Mahasiswa dapat meminjam Router, Switch, dan perangkat IoT untuk keperluan praktikum atau skripsi.</p>
+                        
+                        <a href="layanan.php#peminjaman" class="text-decoration-none fw-bold text-warning stretched-link">
+                            Lihat Prosedur <i class="bi bi-arrow-right ms-1"></i>
+                        </a>
                     </div>
                 </div>
             </div>
 
             <div class="col-md-4">
-                <div class="card card-hover h-100">
-                    <img src="img/service2.jpg" onerror="this.src='https://placehold.co/400x250?text=Layanan+2'" alt="Ruang Lab" class="img-cover" style="height: 200px; object-fit: cover;">
+                <div class="card card-hover h-100 border-0 shadow-sm overflow-hidden">
+                    <div class="img-wrapper position-relative">
+                        <img src="https://images.unsplash.com/photo-1599658880436-c61792e70672?q=80&w=800&auto=format&fit=crop" 
+                             alt="Ruang Lab" class="card-img-top img-zoom">
+                        
+                        <div class="position-absolute top-0 end-0 m-2 bg-success text-white fw-bold px-3 py-1 rounded-pill small shadow-sm">Tersedia</div>
+                    </div>
                     <div class="card-body">
-                        <h5 class="card-title">Penggunaan Ruang Lab</h5>
-                        <p class="text-muted small">Reservasi ruang untuk praktikum, riset, dan latihan tim kompetisi.</p>
-                        <a href="layanan.php" class="text-decoration-none fw-bold text-kampus-blue">Lihat layanan &rarr;</a>
+                        <h5 class="card-title fw-bold text-kampus-blue">Penggunaan Ruang</h5>
+                        <p class="text-muted small">Reservasi ruang laboratorium untuk kegiatan riset mandiri, diskusi tim, atau latihan kompetisi.</p>
+                        
+                        <a href="layanan.php#ruang" class="text-decoration-none fw-bold text-warning stretched-link">
+                            Lihat Jadwal <i class="bi bi-arrow-right ms-1"></i>
+                        </a>
                     </div>
                 </div>
             </div>
 
             <div class="col-md-4">
-                <div class="card card-hover h-100">
-                    <img src="img/service3.jpg" onerror="this.src='https://placehold.co/400x250?text=Layanan+3'" alt="Konsultasi" class="img-cover" style="height: 200px; object-fit: cover;">
+                <div class="card card-hover h-100 border-0 shadow-sm overflow-hidden">
+                    <div class="img-wrapper position-relative">
+                        <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=800&auto=format&fit=crop" 
+                             alt="Konsultasi" class="card-img-top img-zoom">
+                    </div>
                     <div class="card-body">
-                        <h5 class="card-title">Konsultasi & Pendampingan</h5>
-                        <p class="text-muted small">Pendampingan tugas, riset, dan audit keamanan oleh asisten lab.</p>
-                        <a href="layanan.php" class="text-decoration-none fw-bold text-kampus-blue">Lihat layanan &rarr;</a>
+                        <h5 class="card-title fw-bold text-kampus-blue">Konsultasi & Riset</h5>
+                        <p class="text-muted small">Layanan konsultasi keamanan jaringan dan pendampingan riset oleh asisten laboratorium.</p>
+                        
+                        <a href="layanan.php#konsultasi" class="text-decoration-none fw-bold text-warning stretched-link">
+                            Hubungi Kami <i class="bi bi-arrow-right ms-1"></i>
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
+
+<style>
+    /* 1. Pembungkus Gambar: Memastikan gambar tidak keluar batas saat di-zoom */
+    .img-wrapper {
+        height: 200px; /* Tinggi tetap agar rapi */
+        overflow: hidden; /* Sembunyikan bagian gambar yang 'tumpah' saat zoom */
+    }
+
+    /* 2. Style Gambar Awal */
+    .img-zoom {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* Agar gambar tidak gepeng */
+        transition: transform 0.5s ease; /* Durasi animasi halus 0.5 detik */
+    }
+
+    /* 3. Efek Zoom saat Card di-Hover */
+    /* Saat class .card-hover disentuh mouse, elemen .img-zoom di dalamnya akan membesar */
+    .card-hover:hover .img-zoom {
+        transform: scale(1.1); /* Perbesar 110% */
+    }
+</style>
 
 <section class="section">
     <div class="container">

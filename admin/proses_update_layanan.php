@@ -4,15 +4,13 @@ include('../config/db_config.php');
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    // Ambil data dari form
+    // 1. Ambil Data Teks
     $judul_sarana     = pg_escape_string($conn, $_POST['judul_sarana']);
     $isi_sarana       = pg_escape_string($conn, $_POST['isi_sarana']);
     $judul_konsultasi = pg_escape_string($conn, $_POST['judul_konsultasi']);
     $isi_konsultasi   = pg_escape_string($conn, $_POST['isi_konsultasi']);
 
-    // Query UPSERT (Update jika ada, Insert jika belum)
-    // Kita lakukan satu per satu untuk setiap field
-    
+    // Array query awal (untuk teks)
     $queries = [
         "INSERT INTO konten_teks (kunci, isi) VALUES ('layanan_sarana_judul', '$judul_sarana') ON CONFLICT (kunci) DO UPDATE SET isi = '$judul_sarana'",
         "INSERT INTO konten_teks (kunci, isi) VALUES ('layanan_sarana_isi', '$isi_sarana') ON CONFLICT (kunci) DO UPDATE SET isi = '$isi_sarana'",
@@ -20,6 +18,45 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         "INSERT INTO konten_teks (kunci, isi) VALUES ('layanan_konsultasi_isi', '$isi_konsultasi') ON CONFLICT (kunci) DO UPDATE SET isi = '$isi_konsultasi'"
     ];
 
+    // 2. LOGIKA UPLOAD FOTO SARANA
+    if (isset($_FILES['foto_sarana']) && $_FILES['foto_sarana']['error'] === UPLOAD_ERR_OK) {
+        
+        $fileTmpPath = $_FILES['foto_sarana']['tmp_name'];
+        $fileName    = $_FILES['foto_sarana']['name'];
+        $fileNameCmps = explode(".", $fileName);
+        $fileExtension = strtolower(end($fileNameCmps));
+
+        // Sanitasi nama file agar unik
+        $newFileName = md5(time() . $fileName) . '.' . $fileExtension;
+        
+        // --- PERUBAHAN DI SINI ---
+        
+        // Folder tujuan fisik (keluar dari folder admin -> masuk ke img -> masuk ke layanan)
+        $uploadFileDir = '../img/layanan/';
+        
+        // Path fisik lengkap untuk fungsi move_uploaded_file
+        $dest_path = $uploadFileDir . $newFileName;
+        
+        // Path yang disimpan di DATABASE (relatif terhadap index.php / root website)
+        // Jadi nanti di database tersimpan: "img/layanan/namafile.jpg"
+        $db_path = 'img/layanan/' . $newFileName;
+
+        $allowedfileExtensions = array('jpg', 'gif', 'png', 'jpeg', 'webp');
+
+        if (in_array($fileExtension, $allowedfileExtensions)) {
+            // Cek folder, buat secara rekursif (img lalu layanan) jika belum ada
+            if (!is_dir($uploadFileDir)) {
+                mkdir($uploadFileDir, 0755, true);
+            }
+
+            if(move_uploaded_file($fileTmpPath, $dest_path)) {
+                // Simpan path database
+                $queries[] = "INSERT INTO konten_teks (kunci, isi) VALUES ('layanan_sarana_foto', '$db_path') ON CONFLICT (kunci) DO UPDATE SET isi = '$db_path'";
+            }
+        }
+    }
+
+    // 3. Eksekusi Semua Query
     $berhasil = true;
     foreach ($queries as $sql) {
         if (!pg_query($conn, $sql)) {
@@ -30,7 +67,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     if ($berhasil) {
-        echo "<script>alert('Halaman Layanan berhasil diperbarui!'); window.location='kelola_layanan.php';</script>";
+        echo "<script>alert('Data layanan berhasil diperbarui!'); window.location='kelola_layanan.php';</script>";
     }
 
 } else {
