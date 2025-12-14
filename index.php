@@ -1,26 +1,20 @@
 <?php
-// 1. Setup Halaman
 $page_title = "Beranda";
 $active_page = "index";
 include('header.php');
 
-// 2. Hubungkan ke Database
 include('config/db_config.php');
 
-// 3. Ambil Data Konten Utama
-
-// A. Ambil 3 Data Galeri Terbaru
+// ambil 3 data galeri terbaru
 $sql_galeri = "SELECT * FROM galeri ORDER BY tanggal DESC LIMIT 3";
 $res_galeri = pg_query($conn, $sql_galeri);
-// Cek jika ada data, simpan di array. Jika tidak, array kosong.
 $list_galeri = ($res_galeri) ? pg_fetch_all($res_galeri, PGSQL_ASSOC) : [];
 
-// B. Ambil 3 Arsip Terbaru
+// ambil 3 arsip terbaru
 $sql_arsip = "SELECT * FROM arsip ORDER BY tanggal DESC LIMIT 3";
 $res_arsip = pg_query($conn, $sql_arsip);
 $list_arsip = ($res_arsip) ? pg_fetch_all($res_arsip, PGSQL_ASSOC) : [];
 
-// C. PREVIEW STRUKTUR LAB (2 ORANG)
 $sql_preview = "
     SELECT id, nama, jabatan, foto_path
     FROM dosen
@@ -40,7 +34,6 @@ $preview_dosen = $res_preview ? pg_fetch_all($res_preview, PGSQL_ASSOC) : [];
 
 <section class="hero">
     <div class="hero-bg"></div>
-
     <div class="hero-overlay"></div>
 
     <div class="hero-inner text-center">
