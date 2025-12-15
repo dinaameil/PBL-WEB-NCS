@@ -2,7 +2,6 @@
     include('header_admin.php');
     include('../config/db_config.php');
 
-    // Ambil data
     $sql = "SELECT * FROM arsip ORDER BY tanggal DESC";
     $result = pg_query($conn, $sql);
     $data_arsip = pg_fetch_all($result, PGSQL_ASSOC);

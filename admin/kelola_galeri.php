@@ -2,7 +2,6 @@
     include('header_admin.php');
     include('../config/db_config.php');
 
-    // Ambil data galeri dari database
     $sql = "SELECT * FROM galeri ORDER BY tanggal DESC";
     $result = pg_query($conn, $sql);
     $data_galeri = pg_fetch_all($result, PGSQL_ASSOC);

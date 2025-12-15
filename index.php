@@ -208,24 +208,20 @@ $preview_dosen = $res_preview ? pg_fetch_all($res_preview, PGSQL_ASSOC) : [];
 </section>
 
 <style>
-    /* 1. Pembungkus Gambar: Memastikan gambar tidak keluar batas saat di-zoom */
     .img-wrapper {
-        height: 200px; /* Tinggi tetap agar rapi */
-        overflow: hidden; /* Sembunyikan bagian gambar yang 'tumpah' saat zoom */
+        height: 200px;
+        overflow: hidden; 
     }
 
-    /* 2. Style Gambar Awal */
     .img-zoom {
         width: 100%;
         height: 100%;
-        object-fit: cover; /* Agar gambar tidak gepeng */
-        transition: transform 0.5s ease; /* Durasi animasi halus 0.5 detik */
+        object-fit: cover; 
+        transition: transform 0.5s ease;
     }
 
-    /* 3. Efek Zoom saat Card di-Hover */
-    /* Saat class .card-hover disentuh mouse, elemen .img-zoom di dalamnya akan membesar */
     .card-hover:hover .img-zoom {
-        transform: scale(1.1); /* Perbesar 110% */
+        transform: scale(1.1); 
     }
 </style>
 

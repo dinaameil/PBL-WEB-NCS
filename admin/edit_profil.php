@@ -2,8 +2,6 @@
     include('header_admin.php');
     include('../config/db_config.php');
 
-    // --- 1. AMBIL DATA SAAT INI DARI DATABASE ---
-    // Kita ambil visi, misi, dan path FOTO LAB dari tabel konten_teks
     $sql = "SELECT kunci, isi FROM konten_teks WHERE kunci IN ('visi', 'misi', 'foto_lab_path')";
     $result = pg_query($conn, $sql);
     
@@ -12,19 +10,15 @@
         $data[$row['kunci']] = $row['isi'];
     }
 
-    // Set nilai default jika database masih kosong
     $visi_saat_ini = isset($data['visi']) ? $data['visi'] : '';
     $misi_saat_ini = isset($data['misi']) ? $data['misi'] : '';
-    
-    // Ambil path foto lab saat ini
-    // Cek apakah isinya link eksternal (placeholder) atau file lokal
+
     $path_db = isset($data['foto_lab_path']) ? $data['foto_lab_path'] : '';
     if (strpos($path_db, 'http') === 0) {
-        $foto_lab_saat_ini = $path_db; // Gunakan langsung jika link eksternal
+        $foto_lab_saat_ini = $path_db; 
     } elseif (!empty($path_db)) {
-        $foto_lab_saat_ini = '../' . $path_db; // Tambahkan ../ jika file lokal
+        $foto_lab_saat_ini = '../' . $path_db; 
     } else {
-        // Default jika kosong sama sekali
         $foto_lab_saat_ini = 'https://placehold.co/600x400/eeeeee/999999?text=Foto+Lab+Belum+Diatur';
     }
 ?>

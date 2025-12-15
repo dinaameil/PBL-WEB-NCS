@@ -2,7 +2,6 @@
     include('header_admin.php');
     include('../config/db_config.php');
 
-    // Ambil data dosen
     $sql = "SELECT * FROM dosen ORDER BY id ASC";
     $result = pg_query($conn, $sql);
     $daftar_dosen = pg_fetch_all($result, PGSQL_ASSOC);

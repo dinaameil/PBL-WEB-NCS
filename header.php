@@ -14,8 +14,7 @@ if (session_status() === PHP_SESSION_NONE) {
 .card:hover {
     transform: translateY(-8px);
     box-shadow: 0 14px 35px rgba(0,0,0,0.18);
-    /* Mengubah warna border hover agar senada dengan warna kampus */
-    border-color: rgba(0, 51, 102, 0.4); /* Menggunakan --kampus-blue */
+    border-color: rgba(0, 51, 102, 0.4); 
 }
 
 .zoom-img {
@@ -63,16 +62,14 @@ if (session_status() === PHP_SESSION_NONE) {
     <link rel="stylesheet" href="assets/style.css">
 
     <style>
-        /* Custom Colors Definition */
         :root {
             --kampus-blue: #003366;
             --kampus-gold: #FFCC00;
         }
 
-        /* Body and Global Layout */
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f4f7f6; /* Warna background sedikit abu biar konten nonjol */
+            background-color: #f4f7f6; 
             display: flex;
             flex-direction: column;
             min-height: 100vh;

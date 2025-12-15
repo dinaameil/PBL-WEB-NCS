@@ -2,7 +2,6 @@
     include('header_admin.php');
     include('../config/db_config.php');
 
-    // Ambil data (termasuk foto nanti)
     $sql = "SELECT kunci, isi FROM konten_teks WHERE kunci LIKE 'layanan_%'";
     $result = pg_query($conn, $sql);
     $konten = [];

@@ -7,7 +7,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $foto_path_db = $_POST['foto_lama'];
 
-    // upload foto baru (opsional)
     if (!empty($_FILES['foto_baru']['name'])) {
         $file = $_FILES['foto_baru'];
         $file_name = time() . '_' . basename($file['name']);

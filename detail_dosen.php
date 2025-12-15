@@ -4,15 +4,12 @@ $active_page = "dosen";
 include('header.php');
 include('config/db_config.php');
 
-// Ambil ID dosen dari parameter GET
 $id = isset($_GET['id']) ? (int)$_GET['id'] : 0;
 
-// Query data dosen menggunakan prepared statement (pg_query_params)
 $sql = "SELECT * FROM dosen WHERE id = $1";
 $result = pg_query_params($conn, $sql, [$id]);
 $dosen = pg_fetch_assoc($result);
 
-// Cek jika data dosen tidak ditemukan
 if (!$dosen) {
     echo "
     <main class='container py-5 text-center'>
@@ -41,7 +38,6 @@ if (!$dosen) {
                 <div class="card-body p-4">
 
                     <?php
-                        // Logika menentukan path foto atau placeholder
                         $foto_path = !empty($dosen['foto_path']) ? htmlspecialchars($dosen['foto_path']) : 'https://placehold.co/300x400?text=Foto+Dosen';
                     ?>
                     <img

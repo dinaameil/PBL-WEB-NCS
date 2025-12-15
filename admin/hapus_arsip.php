@@ -1,5 +1,5 @@
 <?php
-include('../config/db_config.php'); // Cukup include DB saja
+include('../config/db_config.php'); 
 
 $id = (int)$_GET['id'];
 

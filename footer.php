@@ -12,7 +12,6 @@ document.addEventListener("click", (e) => {
     <div class="container">
         <div class="row">
 
-            <!-- Kolom 1 -->
             <div class="col-lg-3 col-md-6 mb-4">
                 <h5 class="fw-bold text-uppercase mb-3">Lab NCS</h5>
                 <p class="small text-white-50">
@@ -25,7 +24,6 @@ document.addEventListener("click", (e) => {
                 </p>
             </div>
 
-            <!-- Kolom 2 -->
             <div class="col-lg-3 col-md-6 mb-4">
                 <h5 class="fw-bold text-uppercase mb-3">Navigasi</h5>
                 <ul class="list-unstyled">
@@ -36,7 +34,6 @@ document.addEventListener("click", (e) => {
                 </ul>
             </div>
 
-            <!-- Kolom 3 -->
             <div class="col-lg-3 col-md-6 mb-4">
                 <h5 class="fw-bold text-uppercase mb-3">Link Terkait</h5>
                 <ul class="list-unstyled">
@@ -58,7 +55,6 @@ document.addEventListener("click", (e) => {
                 </ul>
             </div>
 
-            <!-- Kolom 4 -->
             <div class="col-lg-3 col-md-6 mb-4">
                 <h5 class="fw-bold text-uppercase mb-3">Kredit Tim</h5>
                 <p class="small text-white-50 mb-2">Website ini dibuat dan dikelola oleh:</p>
@@ -67,7 +63,6 @@ document.addEventListener("click", (e) => {
 
         </div>
 
-        <!-- Copyright -->
         <div class="border-top border-secondary mt-3 pt-3 text-center">
             <p class="small text-white-50 mb-0">
                 © 2025 Laboratorium Network & Cyber Security. All rights reserved.

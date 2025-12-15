@@ -4,7 +4,6 @@
     include('header.php');
     include('config/db_config.php');
 
-    // 1. AMBIL DATA DARI DATABASE (Hasil inputan Admin)
     $sql = "SELECT kunci, isi FROM konten_teks WHERE kunci LIKE 'layanan_%'";
     $result = pg_query($conn, $sql);
     
@@ -28,15 +27,11 @@
         <div class="col-md-4 position-relative">
             
             <?php 
-                // Cek apakah data ada di DB
                 $foto_db = $konten['layanan_sarana_foto'] ?? '';
-                
-                // Cek apakah file fisiknya benar-benar ada
+
                 if (!empty($foto_db) && file_exists($foto_db)) {
-                    // $foto_db isinya sudah "img/layanan/namafile.jpg"
                     $foto_sarana = $foto_db;
                 } else {
-                    // Gambar cadangan placeholder
                     $foto_sarana = "https://placehold.co/600x600/003366/ffffff?text=Fasilitas+Lab";
                 }
             ?>
@@ -132,17 +127,14 @@
 </div>
 
 <style>
-    /* Agar scroll smooth */
     html {
         scroll-behavior: smooth;
     }
-    
-    /* PENTING: Memberi jarak scroll supaya tidak ketutup Header Fixed */
+
     .section-target {
         scroll-margin-top: 100px; 
     }
 
-    /* Efek Hover Kartu */
     .hover-shadow:hover {
         box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
         transform: translateY(-2px);
@@ -150,7 +142,6 @@
     .transition { transition: all 0.3s ease; }
     .text-kampus-blue { color: #003366; }
 
-    /* Efek Highlight (Berkedip) saat diklik dari Beranda */
     :target {
         animation: highlight 1.5s ease-out;
         border: 2px solid #FFCC00 !important;
