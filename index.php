@@ -137,73 +137,69 @@ $preview_dosen = $res_preview ? pg_fetch_all($res_preview, PGSQL_ASSOC) : [];
     </div>
 </section>
 
-<section class="section py-5 section-layanan">
-    <div class="container">
-        <div class="section-title mb-4 d-flex align-items-center">
-            <div class="line"></div>
-            <h3 class="ms-2">Layanan Utama</h3>
-        </div>
+<section class="section container py-5">
+    
+    <div class="section-title mb-4 d-flex align-items-center">
+        <div class="line"></div>
+        <h3 class="ms-2">Layanan Utama</h3>
+    </div>
 
-        <div class="row g-4">
-            
-            <div class="col-md-4">
-                <div class="card card-hover h-100 border-0 shadow-sm overflow-hidden">
-                    <div class="img-wrapper position-relative">
-                        
-                        <img src="https://images.unsplash.com/photo-1520869562399-e772f042f422?q=80&w=800&auto=format&fit=crop" 
-                            alt="Rak Server dan Alat Jaringan" 
-                            class="card-img-top img-zoom"
-                            style="object-fit: cover; height: 200px; width: 100%;">
-                        
-                        <div class="position-absolute top-0 end-0 m-2 bg-warning text-dark fw-bold px-3 py-1 rounded-pill small shadow-sm">Gratis</div>
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title fw-bold text-kampus-blue">Peminjaman Alat</h5>
-                        <p class="text-muted small">Mahasiswa dapat meminjam Router, Switch, dan perangkat IoT untuk keperluan praktikum atau skripsi.</p>
-                        
-                        <a href="layanan.php#peminjaman" class="text-decoration-none fw-bold text-warning stretched-link">
-                            Lihat Prosedur <i class="bi bi-arrow-right ms-1"></i>
-                        </a>
-                    </div>
+    <div class="row g-4">
+        
+        <div class="col-md-4">
+            <div class="card card-hover h-100 border-0 shadow-sm overflow-hidden">
+                <div class="img-wrapper position-relative">
+                    <img src="https://images.unsplash.com/photo-1520869562399-e772f042f422?q=80&w=800&auto=format&fit=crop" 
+                         alt="Rak Server dan Alat Jaringan" 
+                         class="card-img-top img-zoom"
+                         style="object-fit: cover; height: 200px; width: 100%;">
+                    <div class="position-absolute top-0 end-0 m-2 bg-warning text-dark fw-bold px-3 py-1 rounded-pill small shadow-sm">Gratis</div>
                 </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="card card-hover h-100 border-0 shadow-sm overflow-hidden">
-                    <div class="img-wrapper position-relative">
-                        <img src="https://images.unsplash.com/photo-1599658880436-c61792e70672?q=80&w=800&auto=format&fit=crop" 
-                             alt="Ruang Lab" class="card-img-top img-zoom">
-                        
-                        <div class="position-absolute top-0 end-0 m-2 bg-success text-white fw-bold px-3 py-1 rounded-pill small shadow-sm">Tersedia</div>
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title fw-bold text-kampus-blue">Penggunaan Ruang</h5>
-                        <p class="text-muted small">Reservasi ruang laboratorium untuk kegiatan riset mandiri, diskusi tim, atau latihan kompetisi.</p>
-                        
-                        <a href="layanan.php#ruang" class="text-decoration-none fw-bold text-warning stretched-link">
-                            Lihat Jadwal <i class="bi bi-arrow-right ms-1"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="card card-hover h-100 border-0 shadow-sm overflow-hidden">
-                    <div class="img-wrapper position-relative">
-                        <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=800&auto=format&fit=crop" 
-                             alt="Konsultasi" class="card-img-top img-zoom">
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title fw-bold text-kampus-blue">Konsultasi & Riset</h5>
-                        <p class="text-muted small">Layanan konsultasi keamanan jaringan dan pendampingan riset oleh asisten laboratorium.</p>
-                        
-                        <a href="layanan.php#konsultasi" class="text-decoration-none fw-bold text-warning stretched-link">
-                            Hubungi Kami <i class="bi bi-arrow-right ms-1"></i>
-                        </a>
-                    </div>
+                <div class="card-body">
+                    <h5 class="card-title fw-bold text-kampus-blue">Peminjaman Alat</h5>
+                    <p class="text-muted small">Mahasiswa dapat meminjam Router, Switch, dan perangkat IoT untuk keperluan praktikum atau skripsi.</p>
+                    <a href="layanan.php#peminjaman" class="text-decoration-none fw-bold text-warning stretched-link">
+                        Lihat Prosedur <i class="bi bi-arrow-right ms-1"></i>
+                    </a>
                 </div>
             </div>
         </div>
+
+        <div class="col-md-4">
+            <div class="card card-hover h-100 border-0 shadow-sm overflow-hidden">
+                <div class="img-wrapper position-relative">
+                    <img src="https://images.unsplash.com/photo-1599658880436-c61792e70672?q=80&w=800&auto=format&fit=crop" 
+                         alt="Ruang Lab" class="card-img-top img-zoom"
+                         style="object-fit: cover; height: 200px; width: 100%;">
+                    <div class="position-absolute top-0 end-0 m-2 bg-success text-white fw-bold px-3 py-1 rounded-pill small shadow-sm">Tersedia</div>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title fw-bold text-kampus-blue">Penggunaan Ruang</h5>
+                    <p class="text-muted small">Reservasi ruang laboratorium untuk kegiatan riset mandiri, diskusi tim, atau latihan kompetisi.</p>
+                    <a href="layanan.php#ruang" class="text-decoration-none fw-bold text-warning stretched-link">
+                        Lihat Jadwal <i class="bi bi-arrow-right ms-1"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card card-hover h-100 border-0 shadow-sm overflow-hidden">
+                <div class="img-wrapper position-relative">
+                    <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=800&auto=format&fit=crop" 
+                         alt="Konsultasi" class="card-img-top img-zoom"
+                         style="object-fit: cover; height: 200px; width: 100%;">
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title fw-bold text-kampus-blue">Konsultasi & Riset</h5>
+                    <p class="text-muted small">Layanan konsultasi keamanan jaringan dan pendampingan riset oleh asisten laboratorium.</p>
+                    <a href="layanan.php#konsultasi" class="text-decoration-none fw-bold text-warning stretched-link">
+                        Hubungi Kami <i class="bi bi-arrow-right ms-1"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
     </div>
 </section>
 
