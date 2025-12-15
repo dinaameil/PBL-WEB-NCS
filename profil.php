@@ -50,25 +50,31 @@ $baris_kedua = array_slice($daftar_pengurus, 3);
         yang berfokus pada jaringan komputer, keamanan siber, dan teknologi informasi modern.
     </p>
 
-    <div class="row align-items-center mb-5">
-        <div class="col-lg-4 mb-4 mb-lg-0 text-center">
-            <img src="<?php echo $foto_lab_src; ?>"
-                 class="img-fluid rounded shadow-sm w-100" 
-                 alt="Foto Laboratorium NCS"
-                 style="object-fit: cover; aspect-ratio: 4/3;">
+    <div class="row align-items-stretch mb-5 g-0 shadow-sm rounded overflow-hidden">
+    
+    <div class="col-lg-5" style="min-height: 300px;">
+        <img src="<?php echo $foto_lab_src; ?>"
+             class="w-100 h-100" 
+             alt="Foto Laboratorium NCS"
+             style="object-fit: cover;">
+    </div>
+
+    <div class="col-lg-7"> 
+        <div class="card border-0 h-100 bg-white">
+            <div class="card-body p-4 p-lg-5 d-flex flex-column justify-content-center">
+                <h3 class="fw-bold text-kampus-blue mb-3">Tentang Laboratorium</h3>
+                <p class="text-muted lead"> 
+                    Laboratorium NCS digunakan sebagai sarana praktik mahasiswa Program Studi Teknologi Informasi
+                    dalam mempelajari jaringan komputer, keamanan jaringan, penetration testing, digital forensics, dan topik terkait lainnya.
+                </p>
+                <p class="text-muted mb-0">
+                    Selain praktikum, laboratorium ini juga menjadi pusat kegiatan riset, kompetisi CTF,
+                    workshop keamanan siber, serta pengembangan inovasi di bidang jaringan dan keamanan informasi.
+                </p>
             </div>
-        <div class="col-lg-8 ps-lg-5"> 
-            <h3 class="fw-bold text-kampus-blue">Tentang Laboratorium</h3>
-            <p class="text-muted lead"> 
-                Laboratorium NCS digunakan sebagai sarana praktik mahasiswa Program Studi Teknologi Informasi
-                dalam mempelajari jaringan komputer, keamanan jaringan, penetration testing, digital forensics, dan topik terkait lainnya.
-            </p>
-            <p class="text-muted">
-                Selain praktikum, laboratorium ini juga menjadi pusat kegiatan riset, kompetisi CTF,
-                workshop keamanan siber, serta pengembangan inovasi di bidang jaringan dan keamanan informasi.
-            </p>
         </div>
     </div>
+</div>
 
     <div class="mb-5">
         <div class="text-center mb-4">
