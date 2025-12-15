@@ -3,11 +3,8 @@ $page_title = "Profil";
 $active_page = "profil";
 include('header.php');
 
-// 1. Hubungkan ke Database
 include('config/db_config.php');
 
-// --- AMBIL VISI, MISI, DAN FOTO LAB DARI DATABASE ---
-// Tambahkan 'foto_lab_path' ke dalam query
 $sql_teks = "SELECT kunci, isi FROM konten_teks WHERE kunci IN ('visi', 'misi', 'foto_lab_path')";
 $result_teks = pg_query($conn, $sql_teks);
 
@@ -16,30 +13,32 @@ while ($row = pg_fetch_assoc($result_teks)) {
     $data_teks[$row['kunci']] = $row['isi'];
 }
 
-// Set default Visi Misi
 $visi = isset($data_teks['visi']) ? $data_teks['visi'] : "Visi belum diatur oleh Admin.";
 $misi = isset($data_teks['misi']) ? $data_teks['misi'] : "Misi belum diatur oleh Admin.";
 
-// Set Path Foto Lab
 $path_foto_db = isset($data_teks['foto_lab_path']) ? $data_teks['foto_lab_path'] : '';
-// Cek apakah link eksternal atau file lokal
 if (strpos($path_foto_db, 'http') === 0) {
     $foto_lab_src = $path_foto_db;
 } elseif (!empty($path_foto_db)) {
-    $foto_lab_src = $path_foto_db; // File lokal (tidak perlu ../ karena ini di root)
+    $foto_lab_src = $path_foto_db;
 } else {
-    // Placeholder default jika belum diatur
     $foto_lab_src = 'https://placehold.co/600x400/eeeeee/999999?text=Foto+Lab+NCS';
 }
-// ----------------------------------------------------
-
-// 2. Ambil data dari tabel 'dosen' (Pengurus Laboratorium)
-$sql = "SELECT * FROM dosen ORDER BY id ASC";
+// ambil data dari tabel 'dosen' n urutkan Kepala Lab ada di urutan awal
+$sql = "SELECT * FROM dosen ORDER BY 
+    CASE WHEN jabatan ILIKE '%kepala lab%' THEN 1
+    WHEN jabatan ILIKE '%koordinator%' THEN 2
+    WHEN jabatan ILIKE '%peneliti%' THEN 3
+    ELSE 4 END, 
+    id ASC";
 $result = pg_query($conn, $sql);
 $daftar_pengurus = [];
 if ($result) {
     $daftar_pengurus = pg_fetch_all($result, PGSQL_ASSOC);
 }
+$baris_pertama = array_slice($daftar_pengurus, 0, 3);
+$baris_kedua = array_slice($daftar_pengurus, 3);
+
 ?>
 
 <div class="container py-5">
@@ -56,10 +55,12 @@ if ($result) {
             <img src="<?php echo $foto_lab_src; ?>"
                  class="img-fluid rounded shadow-sm w-100" 
                  alt="Foto Laboratorium NCS"
-                 style="object-fit: cover;">
+                 style="object-fit: cover; aspect-ratio: 4/3;">
             </div>
-        <div class="col-lg-8 ps-lg-5"> <h3 class="fw-bold text-kampus-blue">Tentang Laboratorium</h3>
-            <p class="text-muted lead"> Laboratorium NCS digunakan sebagai sarana praktik mahasiswa Program Studi Teknologi Informasi
+        <div class="col-lg-8 ps-lg-5"> 
+            <h3 class="fw-bold text-kampus-blue">Tentang Laboratorium</h3>
+            <p class="text-muted lead"> 
+                Laboratorium NCS digunakan sebagai sarana praktik mahasiswa Program Studi Teknologi Informasi
                 dalam mempelajari jaringan komputer, keamanan jaringan, penetration testing, digital forensics, dan topik terkait lainnya.
             </p>
             <p class="text-muted">
@@ -137,29 +138,48 @@ if ($result) {
             <h3 class="fw-bold text-kampus-blue">Struktur Laboratorium</h3>
             <p class="text-muted">Tim dosen dan asisten Laboratorium NCS</p>
         </div>
-        <div class="row g-4 justify-content-center">
-            <?php if (!empty($daftar_pengurus)): ?>
-                <?php foreach ($daftar_pengurus as $pengurus): ?>
-                    <div class="col-sm-6 col-md-4 col-lg-3 text-center">
+        
+        <?php if (!empty($daftar_pengurus)): ?>
+            <div class="row g-4 justify-content-center mb-4">
+                <?php foreach ($baris_pertama as $pengurus): ?>
+                    <div class="col-sm-6 col-md-4 col-lg-4 text-center">
                         <div class="card h-100 border-0 shadow-sm hover-card" onclick="window.location='detail_dosen.php?id=<?= $pengurus['id']; ?>'">
                             <div class="card-body p-4 d-flex flex-column align-items-center">
                                 <?php $foto = !empty($pengurus['foto_path']) ? $pengurus['foto_path'] : 'https://placehold.co/130x130?text=No+Foto'; ?>
-                                <img src="<?= $foto; ?>" alt="<?= htmlspecialchars($pengurus['nama']); ?>" class="rounded-circle shadow-sm mb-3 object-fit-cover" style="width:130px;height:130px;border:4px solid #f8f9fa;">
+                                <img src="<?= $foto; ?>" alt="<?= htmlspecialchars($pengurus['nama']); ?>" class="rounded-circle shadow-sm mb-3 object-fit-cover" style="width:120px;height:120px;border:4px solid #f8f9fa;">
                                 <h6 class="fw-bold text-kampus-blue mb-1 text-center"><?= htmlspecialchars($pengurus['nama']); ?></h6>
                                 <div class="mt-auto pt-2"><span class="badge bg-light text-secondary border px-3 py-2 rounded-pill"><?= htmlspecialchars($pengurus['jabatan']); ?></span></div>
                             </div>
                         </div>
                     </div>
                 <?php endforeach; ?>
-            <?php else: ?>
-                <div class="col-12 text-center py-5"><div class="bg-light p-4 rounded border border-dashed"><i class="bi bi-people fs-1 text-muted mb-3 d-block"></i><h5 class="text-muted">Belum ada data pengurus.</h5></div></div>
+            </div>
+
+            <?php if (!empty($baris_kedua)): ?>
+            <div class="row g-4 justify-content-center">
+                <?php foreach ($baris_kedua as $pengurus): ?>
+                    <div class="col-sm-6 col-md-4 col-lg-4 text-center">
+                        <div class="card h-100 border-0 shadow-sm hover-card" onclick="window.location='detail_dosen.php?id=<?= $pengurus['id']; ?>'">
+                            <div class="card-body p-4 d-flex flex-column align-items-center">
+                                <?php $foto = !empty($pengurus['foto_path']) ? $pengurus['foto_path'] : 'https://placehold.co/130x130?text=No+Foto'; ?>
+                                <img src="<?= $foto; ?>" alt="<?= htmlspecialchars($pengurus['nama']); ?>" class="rounded-circle shadow-sm mb-3 object-fit-cover" style="width:120px;height:120px;border:4px solid #f8f9fa;">
+                                <h6 class="fw-bold text-kampus-blue mb-1 text-center"><?= htmlspecialchars($pengurus['nama']); ?></h6>
+                                <div class="mt-auto pt-2"><span class="badge bg-light text-secondary border px-3 py-2 rounded-pill"><?= htmlspecialchars($pengurus['jabatan']); ?></span></div>
+                            </div>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            </div>
             <?php endif; ?>
-        </div>
+
+        <?php else: ?>
+            <div class="col-12 text-center py-5"><div class="bg-light p-4 rounded border border-dashed"><i class="bi bi-people fs-1 text-muted mb-3 d-block"></i><h5 class="text-muted">Belum ada data pengurus.</h5></div></div>
+        <?php endif; ?>
     </div>
 </div>
 
 <style>
-    .hover-card { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+    .hover-card { transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer; }
     .hover-card:hover { transform: translateY(-5px); box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.15)!important; }
     .text-kampus-blue { color: #003366; }
     .bg-kampus-blue { background-color: #003366; }
