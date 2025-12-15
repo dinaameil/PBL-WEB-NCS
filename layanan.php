@@ -56,10 +56,9 @@
     </div>
 </div>
 
-    <div class="mb-5">
-        <div class="section-title mb-4 d-flex align-items-center">
-            <div class="line bg-warning" style="width: 5px; height: 30px; border-radius: 2px;"></div>
-            <h3 class="ms-2 fw-bold text-kampus-blue">Katalog Layanan</h3>
+    <div class="d-flex align-items-center mb-4">
+        <div style="width:60px;height:4px;background:#FFC107;border-radius:2px;" class="me-3"></div>
+        <h3 class="fw-bold text-kampus-blue mb-0">Katalog Layanan</h3>
         </div>
 
         <div id="peminjaman" class="card mb-4 border-0 shadow-sm border-start border-4 border-primary hover-shadow transition section-target"> 
