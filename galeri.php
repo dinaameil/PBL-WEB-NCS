@@ -8,6 +8,9 @@
     $result = pg_query($conn, $sql);
     $data_galeri = pg_fetch_all($result, PGSQL_ASSOC);
     if (!$data_galeri) $data_galeri = [];
+
+    // Ambil tanggal hari ini (Format YYYY-MM-DD)
+    $hari_ini = date('Y-m-d');
 ?>
 
     <main class="container py-5">
@@ -33,7 +36,8 @@
                     <?php 
                     $ada_kegiatan = false;
                     foreach ($data_galeri as $item) {
-                        if ($item['kategori'] == 'Kegiatan') {
+                        // LOGIKA BARU: Cek jika tanggal database LEBIH KECIL dari hari ini
+                        if ($item['tanggal'] < $hari_ini) {
                             $ada_kegiatan = true;
                     ?>
                         <div class="col-md-4">
@@ -48,7 +52,7 @@
                     <?php 
                         } 
                     } 
-                    if (!$ada_kegiatan) echo '<div class="alert alert-light border text-center">Belum ada foto kegiatan.</div>';
+                    if (!$ada_kegiatan) echo '<div class="alert alert-light border text-center">Belum ada foto kegiatan yang sudah lewat.</div>';
                     ?>
                 </div>
             </div>
@@ -58,7 +62,8 @@
                     <?php 
                     $ada_agenda = false;
                     foreach ($data_galeri as $item) {
-                        if ($item['kategori'] == 'Agenda') {
+                        // LOGIKA BARU: Cek jika tanggal database LEBIH BESAR atau SAMA DENGAN hari ini
+                        if ($item['tanggal'] >= $hari_ini) {
                             $ada_agenda = true;
                     ?>
                         <div class="col-md-4">
@@ -76,7 +81,7 @@
                     <?php 
                         } 
                     } 
-                    if (!$ada_agenda) echo '<div class="alert alert-light border text-center">Belum ada agenda mendatang.</div>';
+                    if (!$ada_agenda) echo '<div class="alert alert-light border text-center">Tidak ada agenda mendatang.</div>';
                     ?>
                 </div>
             </div>
