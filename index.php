@@ -137,7 +137,7 @@ $preview_dosen = $res_preview ? pg_fetch_all($res_preview, PGSQL_ASSOC) : [];
     </div>
 </section>
 
-<section class="section py-5 bg-light">
+<section class="section py-5 section-layanan">
     <div class="container">
         <div class="section-title mb-4 d-flex align-items-center">
             <div class="line"></div>
