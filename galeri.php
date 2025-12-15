@@ -11,7 +11,7 @@
 ?>
 
     <main class="container py-5">
-        <h1 class="fw-bold text-kampus-blue mb-4">Galeri Kegiatan</h1>
+        <h1 class="fw-bold text-kampus-blue mb-4 text-center">Galeri Kegiatan</h1>
 
         <ul class="nav nav-tabs mb-4" id="galeriTab" role="tablist">
             <li class="nav-item">
