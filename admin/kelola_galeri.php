@@ -67,7 +67,12 @@
                     <?php if (empty($data_galeri)) : ?>
                         <tr><td colspan="5" class="text-center py-4 text-muted">Belum ada foto.</td></tr>
                     <?php else : ?>
-                        <?php foreach ($data_galeri as $item) : ?>
+                        <?php 
+                        $hari_ini = date('Y-m-d'); // Tambahkan ini
+                        foreach ($data_galeri as $item) : 
+                            // Cek status otomatis berdasarkan tanggal
+                            $is_agenda = ($item['tanggal'] >= $hari_ini);
+                        ?>
                         <tr>
                             <td class="px-4">
                                 <img src="../<?php echo $item['foto_path']; ?>" class="rounded object-fit-cover" width="80" height="50">
@@ -75,9 +80,11 @@
                             <td class="fw-bold"><?php echo htmlspecialchars($item['judul']); ?></td>
                             <td><?php echo date('d M Y', strtotime($item['tanggal'])); ?></td>
                             <td>
-                                <span class="badge <?php echo ($item['kategori'] == 'Agenda') ? 'bg-warning text-dark' : 'bg-success'; ?>">
-                                    <?php echo $item['kategori']; ?>
-                                </span>
+                                <?php if ($is_agenda) : ?>
+                                    <span class="badge bg-warning text-dark">Agenda (Akan Datang)</span>
+                                <?php else : ?>
+                                    <span class="badge bg-success">Selesai / Kegiatan</span>
+                                <?php endif; ?>
                             </td>
                             <td class="text-end px-4">
                                 <a href="hapus_galeri.php?id=<?php echo $item['id']; ?>" class="btn btn-sm btn-outline-danger" onclick="return confirm('Hapus foto ini?');">
