@@ -13,7 +13,6 @@ if ($id > 0) {
     $del = pg_query_params($conn, "DELETE FROM arsip WHERE id = $1", [$id]);
 
     if ($del) {
-        // Hapus file fisik
         if ($data && !empty($data['file_path'])) {
             $file = '../' . $data['file_path'];
             if (file_exists($file)) unlink($file);
